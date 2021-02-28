@@ -1,7 +1,8 @@
 # antipiracy image signature
 
 # Set up the environment (not actually necessary if you have a different workflow) 
-- Install `python3`, probably a version since `3.6` 
+Install `python3`, probably a version since `3.6` 
+
 Run: (set up new virtual environment by telling `venv`, a Python module, to create a new environment at `./venv`
 ```bash
 python3 -m venv venv
