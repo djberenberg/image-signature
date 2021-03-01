@@ -4,7 +4,7 @@
 #
 #
 # author: dan berenberg
-
+import secrets
 from typing import Tuple
 from operator import concat
 from functools import reduce
@@ -15,14 +15,17 @@ from PIL import Image
 
 import numpy as np
 
+SECRET_LEN = 8
 class User(object):
     """barebones user"""
     def __init__(self, **metadata):    
         self.metadata = metadata
-        self.__userid = int(sum(
-                                map(ord, 
-                                     reduce(concat,
-                                            map(str, metadata.values())))))
+        self.__token = secrets.token_hex(SECRET_LEN)
+        self.__userid = int(sum(map(ord, self.__token)))
+        #self.__userid = int(sum(
+        #                        map(ord, 
+        #                             reduce(concat,
+        #                                    map(str, metadata.values())))))
         
     def __getitem__(self, key):
         return self.metadata.__getitem__(key)
